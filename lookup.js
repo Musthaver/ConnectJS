@@ -33,7 +33,11 @@ const makeQuery = () => {
     
     client.query(text, values)
         .then(res => {
+            if (res.rows.includes(values)) {
             renderResults(res.rows);
+            } else {
+                console.log("Sorry, that name is not in the database");
+            }
         })
         .catch(err => console.error(err))
         .finally(() => {client.end()});
