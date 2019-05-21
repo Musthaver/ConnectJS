@@ -25,7 +25,7 @@ const makeQuery = () => {
     knex.select().from('famous_people')
     .where('first_name', name)
     .then(function(rows) {
-        if (rows == false) {
+        if (!rows.length) {
             console.log("Sorry, that name is not in the database");
         } else {
             renderResults(rows);
